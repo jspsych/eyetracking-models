@@ -3,13 +3,13 @@ import nbformat
 import os
 import sys
 
-wholedir = os.listdir("/Users/jchid/Downloads/Eyetracking Colab Notebooks/Model Files")
+wholedir = os.listdir("/Users/jchid/Downloads/Eyetracking Colab Notebooks/Models")
 
 "Read file and determine the filetype"
 
 for file in wholedir:
-    while True:
-        if file == jupyter:
+        
+        if file.endswith(".ipynb"):
             with open(file) as f:
                 nb = nbformat.read(f, as_version=4)
 
@@ -17,17 +17,13 @@ for file in wholedir:
             source, meta = exporter.from_notebook_node(nb)
             pyfile = file.rstrip(" .ipynb") + ".py"
 
-            with open(pyfile, 'w') as f:
+            with open("/Users/jchid/Downloads/Eyetracking Colab Notebooks/Models(Python)/" + pyfile, 'w') as f:
                 f.write(source)
 
-            break
 
-        elif file == json:
-            "Convert file to jupyter notebook"
-
-        elif file == python:
-            break
+        elif file.endswith(".py"):
+            pass
 
         else:
-            sys.exit("Unrecognized file type")
+            sys.exit(f"{file} has unrecognized file type")
 
