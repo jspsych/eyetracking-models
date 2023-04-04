@@ -3,9 +3,7 @@ import nbformat
 import os
 import sys
 
-wholedir = os.listdir("/Users/jchid/Downloads/Eyetracking Colab Notebooks/Models")
-
-"Read file and determine the filetype"
+wholedir = os.listdir("/Users/jchid/Downloads/Eyetracking Colab Notebooks/Models(Jupyter)")
 
 for file in wholedir:
         
@@ -15,7 +13,7 @@ for file in wholedir:
 
             exporter = PythonExporter()
             source, meta = exporter.from_notebook_node(nb)
-            pyfile = file.rstrip(" .ipynb") + ".py"
+            pyfile = f.rstrip(" .ipynb") + ".py"
 
             with open("/Users/jchid/Downloads/Eyetracking Colab Notebooks/Models(Python)/" + pyfile, 'w') as f:
                 f.write(source)
