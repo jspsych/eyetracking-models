@@ -6,14 +6,17 @@
 
 import numpy as np
 import tensorflow as tf
+from tf import keras
+from tf.keras import layers
 import matplotlib.pyplot as plt
 from google.colab import drive
 drive.mount('/content/drive')
-!pip install mediapipe
 import mediapipe as mp
 import os
 import json
 import keras
+from sklearn.utils import shuffle
+
 
 # In[ ]:
 
@@ -171,7 +174,7 @@ print(val_x[1])
 # In[ ]:
 
 
-from sklearn.utils import shuffle
+
 
 train_x, train_y = shuffle(train_x, train_y)
 
@@ -184,8 +187,7 @@ print(np.shape(train_y))
 # In[ ]:
 
 
-from tensorflow import keras
-from tensorflow.keras import layers
+
 
 model = keras.Sequential([layers.Dense(128, activation="relu"), layers.Dense(64, activation="relu"), layers.Dense(16, activation="relu"), layers.Dense(2, activation="relu")])
 model.compile(optimizer=keras.optimizers.RMSprop(1e-2), loss="MeanSquaredError", metrics=["mae"])
@@ -246,7 +248,6 @@ val_x[1]
 # In[ ]:
 
 
-import matplotlib.pyplot as plt
 history_dict = history.history
 loss_values = history_dict["loss"]
 val_loss_values = history_dict["val_loss"]
